@@ -4,6 +4,7 @@ using TestProject.Backend.Models;
 
 namespace TestProject.Backend.Controllers
 {
+    [Route("[controller]")]
     public class PhoneController : Controller
     {
         [HttpGet]
