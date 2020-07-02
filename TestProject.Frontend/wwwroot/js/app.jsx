@@ -6,7 +6,7 @@
     }
 
     render() {
-        return <div className="col-lg-3">
+        return <div className="col-lg-4">
             <h4>{this.state.data.name}</h4>
             <p>{this.state.data.os}</p>
         </div>;
@@ -21,10 +21,10 @@ class PhonesList extends React.Component {
     }
 
     loadData() {
-        var request = new XMLHttpRequest();
+        let request = new XMLHttpRequest();
         request.open("get", this.props.apiUrl, true);
         request.onload = function () {
-            var data = JSON.parse(request.responseText);
+            let data = JSON.parse(request.responseText);
             this.setState({ phones: data });
         }.bind(this);
         request.send();

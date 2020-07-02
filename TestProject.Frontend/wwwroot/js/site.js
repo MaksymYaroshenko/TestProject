@@ -16,13 +16,13 @@ function SetData(data) {
     let container = document.getElementById('jsContent');
     if (data.length) {
         let divContainer = CreateElement('DIV', 'container mt-5');
-        let title = CreateElement('H1', 'text-center', 'Phone List got by JS');
+        let title = CreateElement('H1', 'text-center', 'Phone List got by native JS');
         divContainer.appendChild(title);
         container.appendChild(divContainer);
         let divRow = CreateElement('DIV', 'row mt-5 mb-2');
         divContainer.appendChild(divRow);
         for (let i in data) {
-            let div = CreateElement('DIV', 'col-lg-3');
+            let div = CreateElement('DIV', 'col-lg-4');
             let name = CreateElement('H4', '', data[i].name);
             let os = CreateElement('P', '', data[i].os);
             div.appendChild(name);
@@ -31,7 +31,7 @@ function SetData(data) {
         }
     } else {
         container.className = 'container mt-5 text-center';
-        container.innerHTML = '<h2>Phone List is empty.</h2>';
+        container.appendChild(CreateElement('H2', '', 'Phone List is empty.'));
     }
 }
 
