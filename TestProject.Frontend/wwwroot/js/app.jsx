@@ -24,8 +24,18 @@ class PhonesList extends React.Component {
         let request = new XMLHttpRequest();
         request.open("get", this.props.apiUrl, true);
         request.onload = function () {
-            let data = JSON.parse(request.responseText);
-            this.setState({ phones: data });
+            if (request.response) {
+                let data = JSON.parse(request.responseText);
+                if (data.length) {
+                    this.setState({ phones: data });
+                } else {
+                    let element = <div className="container mt-5"><h2 className="text-center">Phone List is empty.</h2></div>;
+                    ReactDOM.render(element, document.getElementById('reactContent'));
+                }
+            } else {
+                let element = <div className="container mt-5"><h2 className="text-center">The server is not responding. Sorry for the inconvenience.</h2></div>;
+                ReactDOM.render(element, document.getElementById('reactContent'));
+            }
         }.bind(this);
         request.send();
     }
